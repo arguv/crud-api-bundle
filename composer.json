@@ -26,12 +26,5 @@
         "symfony/framework-bundle": "^3.4|^4.0|^5.0",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5"
-    },
-	"extra": {
-		"bundles": {
-            "crud-api-bundle": {
-                "url": "https://github.com/arguv/crud-api-bundle/archive/master.zip"
-            }
-        }
     }
 }
