@@ -1,0 +1,4 @@
+services:
+    arguv_crud_api.product.manager:
+        class: Arguv\CrudApiBundle\Service\ProductManager
+        arguments: ["@doctrine.orm.entity_manager", 'Arguv\CrudApiBundle\Entity\Product']

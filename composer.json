@@ -1,0 +1,30 @@
+{
+    "name": "arguv/crud-api-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony bundle for CRUD API",
+    "keywords": ["crud", "api", "bundle"],
+    "homepage": "https://github.com/arguv/crud-api-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gurgen Aramyan",
+            "email": "gurgen.aramian@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Arguv\\CrudApiBundle\\": "Arguv/CrudApiBundle/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Arguv\\CrudApiBundle\\Tests\\": "Arguv/CrudApiBundle/tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "symfony/framework-bundle": "^3.4|^4.0|^5.0",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/orm": "^2.5"
+    }
+}
