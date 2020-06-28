@@ -3,7 +3,7 @@
 ### Composer
 
 ```bash
-composer require arguv/crud-api-bundle
+composer require arguv/crud-api-bundle:dev-master
 ```
 
 ### AppKernel
