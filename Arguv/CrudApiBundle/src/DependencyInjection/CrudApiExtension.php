@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class CrudApiExtentsion extends Extension
+class CrudApiExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {

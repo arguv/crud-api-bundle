@@ -4,7 +4,7 @@ namespace Arguv\CrudApiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Arguv\CrudApiBundle\DependencyInjection\CrudApiExtentsion;
+use Arguv\CrudApiBundle\DependencyInjection\CrudApiExtension;
 
 class CrudApiBundle extends Bundle
 {
@@ -15,6 +15,6 @@ class CrudApiBundle extends Bundle
 
     public function getContainerExtension()
     {
-        return new CrudApiExtentsion();
+        return new CrudApiExtension();
     }
 }

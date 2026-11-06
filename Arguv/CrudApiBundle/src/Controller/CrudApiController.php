@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\NoResultException;
 use Arguv\CrudApiBundle\Entity\Product;
 
 //use Arguv\CrudApiBundle\Controller\ProductControllerTrait;
@@ -32,7 +33,7 @@ class CrudApiController extends Controller
     }
 
     /**
-     * @Route("/arguv/list/{id}")
+     * @Route("/arguv/list/{id}", requirements={"id"="\d+"})
      * @param $id
      * @return JsonResponse
      */
@@ -42,6 +43,8 @@ class CrudApiController extends Controller
             $response = $this->getEntityRepository()->findProduct($id);
 
             return new JsonResponse(array('result' => 'success', 'description' => 'Get Single Record', 'code' => 200, 'data' => $response));
+        } catch (NoResultException $e) {
+            return $this->recordNotFoundResponse($id);
         } catch (\Exception $e) {
             return new JsonResponse(array('result' => 'error', 'description' => $e->getMessage(), 'code' => $e->getCode(), 'data' => []));
         }
@@ -67,7 +70,7 @@ class CrudApiController extends Controller
     }
 
     /**
-     * @Route("/arguv/update/{id}")
+     * @Route("/arguv/update/{id}", requirements={"id"="\d+"})
      * @param Request $request
      * @param $id
      * @return JsonResponse
@@ -77,7 +80,7 @@ class CrudApiController extends Controller
         try {
             $entity = $this->getEntityRepository()->find($id);
             if (!$entity instanceof Product) {
-                return new JsonResponse('No product found in the database with the given id - ' . $id);
+                return $this->recordNotFoundResponse($id);
             }
 
             $data = json_decode($request->getContent(), true);
@@ -91,7 +94,7 @@ class CrudApiController extends Controller
     }
 
     /**
-     * @Route("/arguv/delete/{id}")
+     * @Route("/arguv/delete/{id}", requirements={"id"="\d+"})
      * @param $id
      * @return JsonResponse
      */
@@ -100,7 +103,7 @@ class CrudApiController extends Controller
         try {
             $entity = $this->getEntityRepository()->find($id);
             if (!$entity instanceof Product) {
-                return new JsonResponse('No product found in the database with the given id - ' . $id);
+                return $this->recordNotFoundResponse($id);
             }
 
             $this->getProductManager()->deleteEntity($entity);
@@ -110,5 +113,22 @@ class CrudApiController extends Controller
         } catch (\Exception $e) {
             return new JsonResponse(array('result' => 'error', 'description' => $e->getMessage(), 'code' => $e->getCode(), 'data' => []));
         }
+    }
+
+    /**
+     * @param mixed $id
+     * @return JsonResponse
+     */
+    private function recordNotFoundResponse($id)
+    {
+        return new JsonResponse(
+            array(
+                'result' => 'error',
+                'description' => 'No product found in the database with the given id - ' . $id,
+                'code' => 404,
+                'data' => [],
+            ),
+            404
+        );
     }
 }
