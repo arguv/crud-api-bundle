@@ -1,3 +1,26 @@
-.idea
+# Composer dependencies and generated metadata
 /vendor/
 composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+
+# Symfony runtime files
+/var/
+/app/cache/
+/app/logs/
+
+# Environment files containing local configuration or secrets
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Operating-system files
+.DS_Store
+Thumbs.db
