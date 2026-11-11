@@ -1,6 +1,5 @@
 # Composer dependencies and generated metadata
 /vendor/
-composer.lock
 
 # PHPUnit
 .phpunit.result.cache
