@@ -1,10 +1,12 @@
 # CRUD API Bundle
 
+[Packagist](https://packagist.org/packages/arguv/crud-api-bundle)
+
 Reusable Symfony 3.4 bundle providing a JSON CRUD API for the `Product` entity.
 
 ## Requirements
 
-- PHP 5.6 or newer
+- PHP 7.2.5 or newer
 - Symfony 3.4
 - Doctrine ORM 2.5 or newer
 
