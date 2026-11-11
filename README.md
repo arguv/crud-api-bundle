@@ -6,7 +6,7 @@ Reusable Symfony 3.4 bundle providing a JSON CRUD API for the `Product` entity.
 
 ## Requirements
 
-- PHP 7.2.5 or newer
+- PHP 7.3 or newer
 - Symfony 3.4
 - Doctrine ORM 2.5 or newer
 
